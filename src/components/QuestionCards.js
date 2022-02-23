@@ -6,7 +6,9 @@ import { Button, Card } from "react-bootstrap";
 
 function QuestionCards() {
   const Questions = useSelector((state) => state.Questions);
-  console.log(Questions);
+  const User = useSelector((state) => state.LoggedUser);
+  console.log(User);
+  // console.log(Questions);
   const dispatch = useDispatch();
   api.getAllQuestions().then((questions) => dispatch(loadQuestion(questions)));
   return (

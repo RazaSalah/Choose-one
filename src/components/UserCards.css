@@ -1,8 +1,8 @@
-.Navlink {
+.buttonLink {
   text-decoration: none;
   color: white;
   margin-right: 10px;
 }
-.Navlink:hover {
+.buttonLink:hover {
   color: rgba(219, 71, 133, 0.753);
 }

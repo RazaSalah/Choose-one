@@ -1,8 +1,10 @@
 import React from "react";
 import * as api from "../DATA";
 import { useDispatch, useSelector } from "react-redux";
-import { loadUser } from "../actions";
+import { getUser, loadUser } from "../actions";
 import { Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import "./UserCards.css";
 
 function UserCards() {
   const userInfo = useSelector((state) => state.Users);
@@ -30,8 +32,17 @@ function UserCards() {
           />
           <Card.Body>
             <Card.Title className="text-center">{user.fullname}</Card.Title>
-            <Button variant="info" className="btn-block">
-              LogIn
+            <Button
+              variant="info"
+              className="btn-block"
+              onClick={() => {
+                dispatch(getUser(user));
+              }}
+            >
+              <Link to="/Home" className="buttonLink">
+                {" "}
+                LogIn
+              </Link>
             </Button>
           </Card.Body>
         </Card>
