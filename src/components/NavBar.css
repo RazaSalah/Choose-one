@@ -1,0 +1,8 @@
+.Navlink {
+  text-decoration: none;
+  color: white;
+  margin-right: 10px;
+}
+.Navlink:hover {
+  color: rgba(112, 5, 235, 0.753);
+}

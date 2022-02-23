@@ -5,7 +5,7 @@ let users = {
     id: 1,
     fullname: "Elon Musk",
     imgUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/3/34/Elon_Musk_Royal_Society_%28crop2%29.jpg",
+      "https://media.architecturaldigest.com/photos/60e71db5ab269c67afc7e283/1:1/w_2000,h_2000,c_limit/GettyImages-1215628293.jpg",
     questions: ["tvtzpuph1oo", "5yv0wo4lvv8"],
     answers: { tvtzpuph1oo: "secondOption" },
   },

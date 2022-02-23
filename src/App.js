@@ -1,12 +1,21 @@
-import * as api from "./DATA";
-import { useDispatch } from "react-redux";
-import { loadUser, loadQuestion } from "./actions";
+import LogIn from "./pages/logIn";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 
 function App() {
-  const dispatch = useDispatch();
-  api.getAllUsers().then((users) => dispatch(loadUser(users)));
-  api.getAllQuestions().then((questions) => dispatch(loadQuestion(questions)));
-  return <div className="App">Choose one App</div>;
+  return (
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" exact element={<LogIn />} />
+          <Route path="/Home" element={<Home />} />
+          {/*<Route path="/ProjectPage" element={<Project />} />
+          <Route path="/contact" element={<Contact />} /> */}
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
 }
 
 export default App;
