@@ -1,8 +1,17 @@
-import { USERS } from "../actions/type";
+import { USERS, NEWQUESTION } from "../actions/type";
 
-export default function users(state = [], action) {
-  if (action.type === USERS) {
-    return { ...action.users };
+export default function users(state = [], { type, user, newQuestion, users }) {
+  if (type === USERS) {
+    return { ...users };
+  }
+  if (type === NEWQUESTION) {
+    return {
+      ...state,
+      [user]: {
+        ...state[user],
+        questions: state[user].questions.concat([newQuestion.id]),
+      },
+    };
   } else {
     return state;
   }

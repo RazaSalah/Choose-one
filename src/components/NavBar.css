@@ -1,8 +1,12 @@
 .Navlink {
   text-decoration: none;
   color: white;
-  margin-right: 10px;
+  margin-right: 11px;
+  margin-top: 6px;
 }
 .Navlink:hover {
-  color: rgba(219, 71, 133, 0.753);
+  color: #79cbca;
+}
+.Nav-bg {
+  background: linear-gradient(to right, #79cbca, #e684ae);
 }

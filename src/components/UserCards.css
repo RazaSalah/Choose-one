@@ -6,3 +6,6 @@
 .buttonLink:hover {
   color: rgba(219, 71, 133, 0.753);
 }
+.btn {
+  background: linear-gradient(to right, #79cbca, #e684ae);
+}

@@ -1,7 +1,6 @@
-import React from "react";
-import * as api from "../DATA";
+import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser, loadUser } from "../actions";
+import { getData, getUser } from "../actions";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./UserCards.css";
@@ -9,7 +8,10 @@ import "./UserCards.css";
 function UserCards() {
   const userInfo = useSelector((state) => state.Users);
   const dispatch = useDispatch();
-  api.getAllUsers().then((users) => dispatch(loadUser(users)));
+  useEffect(() => {
+    dispatch(getData());
+  }, []);
+
   return (
     <div
       className=" d-flex justify-content-center"
@@ -18,7 +20,8 @@ function UserCards() {
       {Object.values(userInfo).map((user) => (
         <Card
           style={{ width: "300px", borderRadius: "4px" }}
-          className="shadow"
+          className="shadow mr-3"
+          key={user.id}
         >
           <Card.Img
             variant="top"
@@ -33,8 +36,7 @@ function UserCards() {
           <Card.Body>
             <Card.Title className="text-center">{user.fullname}</Card.Title>
             <Button
-              variant="info"
-              className="btn-block"
+              className="btn-block btn"
               onClick={() => {
                 dispatch(getUser(user));
               }}
