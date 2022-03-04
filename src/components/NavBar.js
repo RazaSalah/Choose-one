@@ -6,8 +6,7 @@ import Logo from "../assets/ask.png";
 import { useSelector } from "react-redux";
 
 function NavBar() {
-  const User = useSelector((state) => state.LoggedUser);
-  console.log(User);
+  const user = useSelector((state) => state.LoggedUser);
 
   return (
     <div className="Nav-bg">
@@ -21,7 +20,7 @@ function NavBar() {
               className="d-inline-block align-top mr-3"
               alt=" logo"
             />
-            {User.fullname}
+            {user.fullname}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -35,19 +34,6 @@ function NavBar() {
               <NavLink to="/Home" className="Navlink">
                 Leader Board
               </NavLink>
-
-              {/* <NavDropdown title="Questions" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="/Answered">
-                  Answered Questions
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/NotAnswered">
-                  Not Answered Questions
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="/AddQuestion">
-                  Add Question
-                </NavDropdown.Item>
-              </NavDropdown> */}
 
               <NavLink to="/" className="Navlink">
                 Log Out

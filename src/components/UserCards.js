@@ -1,6 +1,6 @@
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getData, getUser } from "../actions";
+import { getUser } from "../actions";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./UserCards.css";
@@ -8,10 +8,6 @@ import "./UserCards.css";
 function UserCards() {
   const userInfo = useSelector((state) => state.Users);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getData());
-  }, []);
-
   return (
     <div
       className=" d-flex justify-content-center"

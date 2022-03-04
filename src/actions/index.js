@@ -1,4 +1,4 @@
-import { USERS, QUESTIONS, LOGGEDUSER, NEWQUESTION } from "./type";
+import { USERS, QUESTIONS, LOGGEDUSER, NEWQUESTION, ADDANSWER } from "./type";
 import * as api from "../DATA";
 
 // load all users
@@ -12,13 +12,18 @@ export const loadQuestion = (questions) => {
 };
 
 // get the active user
-export const getUser = (user) => {
-  return { type: LOGGEDUSER, user };
+export const getUser = (authedUser) => {
+  return { type: LOGGEDUSER, authedUser };
 };
 
 // adding questions
-export const addQuestionCreator = (newQuestion, activeUser) => {
-  return { type: NEWQUESTION, newQuestion, activeUser };
+export const addQuestionCreator = (newQuestion) => {
+  return { type: NEWQUESTION, newQuestion };
+};
+
+// adding Answers
+export const addAnswers = ({ answer, authedUser, questionId }) => {
+  return { type: ADDANSWER, answer, authedUser, questionId };
 };
 
 // thunk function
@@ -31,16 +36,20 @@ export const getData = () => {
   };
 };
 
-// export const setLoggedUser = (activeUser) => {
-//   return function (dispatch) {
-//     dispatch(getUser(activeUser));
-//   };
-// };
-
-export const addQuestion = (question, activeUser) => {
+export const setLoggedUser = (activeUser) => {
   return function (dispatch) {
-    api
-      .addQuestion(question)
-      .then((res) => dispatch(addQuestionCreator(res, activeUser)));
+    dispatch(getUser(activeUser));
+  };
+};
+
+export const addQuestion = (question) => {
+  return function (dispatch) {
+    api.addQuestion(question).then((res) => dispatch(addQuestionCreator(res)));
+  };
+};
+
+export const addAnswer = (answer) => {
+  return function (dispatch) {
+    api.addAnswerToQuestion(answer).then((res) => dispatch(addAnswer(answer)));
   };
 };

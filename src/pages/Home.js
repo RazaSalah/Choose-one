@@ -11,17 +11,14 @@ function Home() {
       <NavBar />
 
       <Tabs
-        defaultActiveKey="home"
+        defaultActiveKey="answered"
         id="uncontrolled-tab-example"
         className="mt-4 justify-content-center "
       >
-        <Tab eventKey="home" title="All Questions">
-          <AllQuestions />
-        </Tab>
-        <Tab eventKey="profile" title="Answered">
+        <Tab eventKey="answered" title="Answered">
           <AnsweredQuestion />
         </Tab>
-        <Tab eventKey="contact" title="Not Answered">
+        <Tab eventKey="notAnswered" title="Not Answered">
           <NotAnsweredQuestions />
         </Tab>
       </Tabs>

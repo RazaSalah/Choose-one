@@ -1,13 +1,28 @@
-import { QUESTIONS, NEWQUESTION } from "../actions/type";
+import { QUESTIONS, NEWQUESTION, ADDANSWER } from "../actions/type";
 
-export default function questions(state = [], action) {
-  if (action.type === QUESTIONS) {
-    return { ...action.questions };
+export default function questions(
+  state = [],
+  { type, questions, newQuestion, questionId, answer, authedUser }
+) {
+  if (type === QUESTIONS) {
+    return { ...questions };
   }
-  if (action.type === NEWQUESTION) {
+  if (type === NEWQUESTION) {
     return {
       ...state,
-      [action.newQuestion.id]: action.newQuestion,
+      [newQuestion.id]: newQuestion,
+    };
+  }
+  if (type === ADDANSWER) {
+    return {
+      ...state,
+      [questionId]: {
+        ...state[questionId],
+        [answer]: {
+          ...state[questionId][answer],
+          votes: state[questionId][answer].votes.concat([authedUser]),
+        },
+      },
     };
   } else {
     return state;
