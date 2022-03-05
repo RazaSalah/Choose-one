@@ -1,8 +1,9 @@
-import { React, useEffect } from "react";
+import { React } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getData, addAnswer } from "../actions";
+import { addAnswer } from "../actions";
 import { addAnswerToQuestion } from "../DATA";
 import { Button, Card, Row } from "react-bootstrap";
+import "./QuestionCard.css";
 
 function NotAnswered() {
   const questions = useSelector((state) => state.Questions);
@@ -34,15 +35,11 @@ function NotAnswered() {
   };
 
   return (
-    <div
-      className=" container justify-content-center"
-      style={{ marginTop: "100px", marginBottom: "150px" }}
-    >
-      <Card.Title className="text-Right">Which one do you prefer ?</Card.Title>
+    <div className=" container justify-content-center card-container">
       {notAnswered.map((question) => {
-        const userImg = Object.values(users).filter(
+        const creator = Object.values(users).filter(
           (user) => user.id === question.creator
-        )[0].imgUrl;
+        );
         const questionId = question.id;
         return (
           <Card
@@ -50,21 +47,21 @@ function NotAnswered() {
             className="shadow"
             key={question.id}
           >
+            <Card.Header className="d-flex">
+              <Card.Img src={creator[0].imgUrl} className="user-avatar" />
+              <Card.Title className="lg-2">
+                {creator[0].fullname} asks
+              </Card.Title>
+            </Card.Header>
+
             <Card.Body>
-              <Card.Img
-                src={userImg}
-                style={{
-                  borderRadius: "50%",
-                  width: "20%",
-                  hight: "20%",
-                  marginLeft: "20px",
-                  marginTop: "20px",
-                }}
-              />
+              <Card.Text className="text-Right">
+                Which one do you prefer ?
+              </Card.Text>
               <Row className="mb-2 justify-content-center align-items-baseline ">
                 <Button
                   variant="info"
-                  className="btn-block col-5 mr-3"
+                  className="btn-block col-5  mr-3"
                   value="firstOption"
                   onClick={(e) => {
                     clickHandler(e, questionId);

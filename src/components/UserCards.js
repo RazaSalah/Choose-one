@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import { React } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../actions";
 import { Button, Card } from "react-bootstrap";
@@ -9,26 +9,10 @@ function UserCards() {
   const userInfo = useSelector((state) => state.Users);
   const dispatch = useDispatch();
   return (
-    <div
-      className=" d-flex justify-content-center"
-      style={{ marginTop: "150px" }}
-    >
+    <div className=" d-flex justify-content-center user-card">
       {Object.values(userInfo).map((user) => (
-        <Card
-          style={{ width: "300px", borderRadius: "4px" }}
-          className="shadow mr-3"
-          key={user.id}
-        >
-          <Card.Img
-            variant="top"
-            src={user.imgUrl}
-            style={{
-              borderRadius: "4px",
-              width: "100%",
-              hight: "100%",
-              margin: "auto",
-            }}
-          />
+        <Card className="shadow mr-3 card-style" key={user.id}>
+          <Card.Img variant="top" src={user.imgUrl} className="user-img" />
           <Card.Body>
             <Card.Title className="text-center">{user.fullname}</Card.Title>
             <Button
@@ -38,7 +22,6 @@ function UserCards() {
               }}
             >
               <Link to="/Home" className="buttonLink">
-                {" "}
                 LogIn
               </Link>
             </Button>

@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import AddQuestion from "./pages/AddQuestion";
+import LeaderPage from "./pages/LeaderPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -17,8 +18,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<LogIn />} />
-          <Route path="/Home" element={<Home />} />
-          <Route path="/AddQuestion" element={<AddQuestion />} />
+          <Route path="/Home" exact element={<Home />} />
+          <Route path="/AddQuestion" exact element={<AddQuestion />} />
+          <Route path="/LeaderPage" exact element={<LeaderPage />} />
         </Routes>
       </BrowserRouter>
     </>

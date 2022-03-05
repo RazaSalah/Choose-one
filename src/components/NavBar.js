@@ -13,14 +13,8 @@ function NavBar() {
       <Navbar collapseOnSelect expand="lg" variant="dark">
         <Container>
           <Navbar.Brand href="#home">
-            <img
-              src={Logo}
-              width="30"
-              height="30"
-              className="d-inline-block align-top mr-3"
-              alt=" logo"
-            />
-            {user.fullname}
+            <img src={Logo} className="d-inline-block align-top mr-1 logo" />
+            {user.id}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -31,7 +25,7 @@ function NavBar() {
               <NavLink to="/AddQuestion" className="Navlink">
                 Add Question
               </NavLink>
-              <NavLink to="/Home" className="Navlink">
+              <NavLink to="/LeaderPage" className="Navlink">
                 Leader Board
               </NavLink>
 
