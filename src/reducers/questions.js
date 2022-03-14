@@ -6,12 +6,14 @@ export default function questions(
 ) {
   if (type === QUESTIONS) {
     return { ...questions };
-  } else if (type === NEWQUESTION) {
+  }
+  if (type === NEWQUESTION) {
     return {
       ...state,
       [newQuestion.id]: newQuestion,
     };
-  } else if (type === ADDANSWER) {
+  }
+  if (type === ADDANSWER) {
     return {
       ...state,
       [questionId]: {

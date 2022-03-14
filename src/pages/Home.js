@@ -1,11 +1,20 @@
-import React from "react";
+import { React, useEffect } from "react";
 import NavBar from "../components/NavBar";
 import NotAnsweredQuestions from "../components/NotAnswered";
 import AnsweredQuestion from "../components/AnsweredQuestion";
 import { Tab, Tabs } from "react-bootstrap";
-import AllQuestions from "../components/AllQuestions";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 
 function Home() {
+  const activeUser = useSelector((state) => state.LoggedUser);
+  const userName = Object.values(activeUser);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (userName.length === 0) {
+      navigate("/");
+    }
+  }, []);
   return (
     <div>
       <NavBar />

@@ -1,18 +1,15 @@
 import { React } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addAnswer } from "../actions";
-import { addAnswerToQuestion } from "../DATA";
 import { Button, Card, Row } from "react-bootstrap";
 import "./QuestionCard.css";
 
 function NotAnswered() {
   const questions = useSelector((state) => state.Questions);
-  const activeUser = useSelector((state) => state.LoggedUser);
-
-  const answersId = Object.keys(activeUser.answers);
+  const activeUser = useSelector((state) => state.Users[state.LoggedUser.id]);
   const users = useSelector((state) => state.Users);
   const notAnswered = Object.values(questions).filter(
-    (question) => !answersId.includes(question.id)
+    (question) => !Object.keys(activeUser.answers).includes(question.id)
   );
   const arr = Object.values(questions);
   const dispatch = useDispatch();
@@ -27,11 +24,6 @@ function NotAnswered() {
     console.log(ans);
 
     dispatch(addAnswer(ans));
-    // addAnswerToQuestion({
-    //   answer: e.target.value,
-    //   authedUser: activeUser.id,
-    //   questionId: questions.id,
-    // });
   };
 
   return (
@@ -82,6 +74,11 @@ function NotAnswered() {
                 </Button>
               </Row>
             </Card.Body>
+            <Card.Footer className="text-muted ">
+              Total Votes :
+              {question.firstOption.votes.length +
+                question.secondOption.votes.length}
+            </Card.Footer>
           </Card>
         );
       })}

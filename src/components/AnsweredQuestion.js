@@ -5,11 +5,10 @@ import "./QuestionCard.css";
 
 function AnsweredQuestion() {
   const questions = useSelector((state) => state.Questions);
-  const ActiveUser = useSelector((state) => state.LoggedUser);
-  const answersId = Object.keys(ActiveUser.answers);
+  const activeUser = useSelector((state) => state.Users[state.LoggedUser.id]);
   const users = useSelector((state) => state.Users);
   const answered = Object.values(questions).filter((question) =>
-    answersId.includes(question.id)
+    Object.keys(activeUser.answers).includes(question.id)
   );
 
   return (
@@ -35,7 +34,7 @@ function AnsweredQuestion() {
                 Which one do you prefer ? {}
               </Card.Text>
               <Row className="mb-2 justify-content-center align-items-baseline ">
-                {question.firstOption.votes.includes(ActiveUser.id) ? (
+                {question.firstOption.votes.includes(activeUser.id) ? (
                   <Button
                     variant="Success"
                     className="btn-block col-5 mr-3 user-answer"
@@ -52,7 +51,7 @@ function AnsweredQuestion() {
                     {question.firstOption.string}
                   </Button>
                 )}
-                {question.secondOption.votes.includes(ActiveUser.id) ? (
+                {question.secondOption.votes.includes(activeUser.id) ? (
                   <Button
                     variant="Success"
                     className="btn-block col-5 mr-3 user-answer"

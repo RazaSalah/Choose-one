@@ -1,5 +1,5 @@
 import { USERS, NEWQUESTION, ADDANSWER } from "../actions/type";
-
+// we don't use else if , only if or switch will be used here because to pass trough all the statements
 export default function users(
   state = [],
   action
@@ -7,7 +7,8 @@ export default function users(
 ) {
   if (action.type === USERS) {
     return { ...action.users };
-  } else if (action.type === NEWQUESTION) {
+  }
+  if (action.type === NEWQUESTION) {
     return {
       ...state,
       [action.newQuestion.creator]: {
@@ -17,7 +18,8 @@ export default function users(
         ]),
       },
     };
-  } else if (action.type === ADDANSWER) {
+  }
+  if (action.type === ADDANSWER) {
     const { answer, authedUser, questionId } = action;
     return {
       ...state,

@@ -49,7 +49,8 @@ export const addQuestion = (question) => {
 };
 
 export const addAnswer = (answer) => {
+  console.log(answer);
   return function (dispatch) {
-    api.addAnswerToQuestion(answer).then((res) => dispatch(addAnswer(answer)));
+    api.addAnswerToQuestion(answer).then((res) => dispatch(addAnswers(answer)));
   };
 };
