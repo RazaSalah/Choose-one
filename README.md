@@ -9,6 +9,8 @@ Choose-One is a simple question app that allows you to add questions. It also al
 - CSS
 - React Js
 - React
+- Redux
+- React-Bootstrap
 
 ## Getting Started
 
